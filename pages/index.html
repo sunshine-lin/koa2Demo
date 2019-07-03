@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <link rel="stylesheet" href="/css/element.min.css">
+  <link rel="stylesheet" href="/css/element-theme/index.css">
   <link rel="stylesheet" href="/css/reset.css">
   <link rel="stylesheet" href="/css/common.css">
   <link rel="stylesheet" href="/css/index/index.css">
@@ -18,7 +19,11 @@
       src="/images/index/son.jpg"
       ></el-image>
       <div>
-        <el-button type="primary" @click="btnClick">登录</el-button>
+        <div>
+            <el-button type="primary" @click="btnClick('register')">注册</el-button>
+            <el-button type="primary" @click="btnClick('login')">登录</el-button>
+        </div>
+      
       </div>
   </div>
 </body>

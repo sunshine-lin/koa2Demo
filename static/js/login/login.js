@@ -7,12 +7,14 @@ new Vue({
       rem: false
     },
     rules:{
-      name: {}
-    }
+      name: {required: true,message: '请输入',trigger: 'blur'},
+      pwd: {required: true,message: '请输入',trigger: 'blur'},
+    },
   },
   methods:{
     btnClick(){
-      alert(1)
+      console.log(fetch)
+      
     }
   }
 })

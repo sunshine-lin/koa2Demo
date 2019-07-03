@@ -8,8 +8,8 @@
   <link rel="stylesheet" href="/css/element-theme/index.css">
   <link rel="stylesheet" href="/css/reset.css">
   <link rel="stylesheet" href="/css/common.css">
-  <link rel="stylesheet" href="/css/login/login.css">
-  <title>登录</title>
+  <link rel="stylesheet" href="/css/register/register.css">
+  <title>注册</title>
 </head>
 <body>
   <div id="app" class="page" v-cloak>
@@ -22,15 +22,16 @@
             <el-form-item label="密码" prop="pwd">
               <el-input v-model="ruleForm.pwd"></el-input>
             </el-form-item>
-            <el-form-item label="7天免登陆" prop="rem">
-              <el-switch v-model="ruleForm.rem"></el-switch>
+            <el-form-item label="手机号码" prop="phone" >
+              <el-input v-model="ruleForm.phone" :maxlength="11"></el-input>
             </el-form-item>
           </el-form>
-          <el-button type="primary" @click="btnClick">提交</el-button>
+          <el-button type="primary" 
+          @click="btnClick">注册</el-button>
     </div>
   </div>
 </body>
 </html>
 <script src="/js/vue.min.js"></script>
 <script src="/js/element.min.js"></script>
-<script src="/js/login/login.js"></script>
+<script src="/js/register/register.js"></script>
