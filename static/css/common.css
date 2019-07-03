@@ -1,0 +1,10 @@
+[v-cloak]{
+  display: none;
+}
+body{
+  font-size: 14px;
+  font-family: "Helvetica Neue",Helvetica,"PingFang SC","Hiragino Sans GB","Microsoft YaHei","微软雅黑",Arial,sans-serif;
+}
+#app{
+  min-height: 100vh;
+}
