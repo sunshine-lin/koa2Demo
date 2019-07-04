@@ -13,8 +13,13 @@ new Vue({
   },
   methods:{
     btnClick(){
-      console.log(fetch)
-      
+      fetch('/login', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(this.ruleForm)
+      })
     }
   }
 })
