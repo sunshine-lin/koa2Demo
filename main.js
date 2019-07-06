@@ -42,8 +42,14 @@ router.post('/registeruser', async ctx => {
 })
 // 登录
 router.post('/login', async ctx => {
-  await userLogin(ctx.request.body)
-  console.log(userLogin(ctx.request.body))
+  var query = ctx.request.body
+  var body = await userLogin(query)
+  // 是否设置cookie
+  query.rem &&  ctx.cookies.set('name', query.name, {
+    maxAge: 1000*60*60*24*7,
+    overwrite:false
+  })
+  ctx.body = body
   // var flag = await userLogin(ctx.request.body)
   // if (flag) {
   //   var res = await register(ctx.request.body)
@@ -86,7 +92,6 @@ function checkUser(params) {
         var dbo = db.db("koa2demo");
         dbo.collection("users").find().toArray(function (err, result) { // 返回集合中所有数据
           if (err) throw err;
-          console.log('result', result);
           result.some(item => {
             if (item.name === params.name) {
               reslove(false)
@@ -111,10 +116,9 @@ function userLogin(params) {
         var dbo = db.db("koa2demo");
         dbo.collection("users").find().toArray(function (err, result) { // 返回集合中所有数据
             if (err) throw err;
-            console.log('result', result);
             result.some(item => {
               if (item.name === params.name) {
-                if (item.pwd === item.pwd) {
+                if (item.pwd === params.pwd) {
                   reslove({body: item,code: 200,error: ''})
                 } else {
                   reslove({body: -2,code: 301,error: '密码错误'})
@@ -127,17 +131,6 @@ function userLogin(params) {
             reslove(true)
             db.close();
           });
-        // dbo.collection("users").find({name: params.name}).toArray(function (err, result) { // 返回集合中所有数据
-        //   if (err) throw err;
-        //   console.log('result', result);
-        //   result.some(item => {
-        //     if (item.name === params.name) {
-        //       reslove(false)
-        //     }
-        //   })
-        //   reslove(true)
-        //   db.close();
-        // });
       }
       db.close();
     });

@@ -21,6 +21,13 @@ new Vue({
           'Content-Type': 'application/json'
         },
         body: JSON.stringify(this.ruleForm)
+      }).then(response=>response.json())
+      .then(body  =>{
+        if (body.code === 200) {
+          this.$alert('提示','注册成功')
+        } else {
+          this.$alert('提示','该用户已经注册过了')
+        }
       })
     }
   }
